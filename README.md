@@ -1,1 +1,1 @@
-# sandrajohn2.github.io
+# Google Data Analytics Case Study: Bellabeat Fitness Data Analysis
