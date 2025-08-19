@@ -1,0 +1,56 @@
+       Id             ActivityDate       
+ Min.   :1.504e+09   Min.   :2016-04-12  
+ 1st Qu.:2.320e+09   1st Qu.:2016-04-19  
+ Median :4.445e+09   Median :2016-04-26  
+ Mean   :4.855e+09   Mean   :2016-04-26  
+ 3rd Qu.:6.962e+09   3rd Qu.:2016-05-04  
+ Max.   :8.878e+09   Max.   :2016-05-12  
+   TotalSteps    TotalDistance   
+ Min.   :    0   Min.   : 0.000  
+ 1st Qu.: 3790   1st Qu.: 2.620  
+ Median : 7406   Median : 5.245  
+ Mean   : 7638   Mean   : 5.490  
+ 3rd Qu.:10727   3rd Qu.: 7.713  
+ Max.   :36019   Max.   :28.030  
+ TrackerDistance  LoggedActivitiesDistance
+ Min.   : 0.000   Min.   :0.0000          
+ 1st Qu.: 2.620   1st Qu.:0.0000          
+ Median : 5.245   Median :0.0000          
+ Mean   : 5.475   Mean   :0.1082          
+ 3rd Qu.: 7.710   3rd Qu.:0.0000          
+ Max.   :28.030   Max.   :4.9421          
+ VeryActiveDistance ModeratelyActiveDistance
+ Min.   : 0.000     Min.   :0.0000          
+ 1st Qu.: 0.000     1st Qu.:0.0000          
+ Median : 0.210     Median :0.2400          
+ Mean   : 1.503     Mean   :0.5675          
+ 3rd Qu.: 2.053     3rd Qu.:0.8000          
+ Max.   :21.920     Max.   :6.4800          
+ LightActiveDistance SedentaryActiveDistance
+ Min.   : 0.000      Min.   :0.000000       
+ 1st Qu.: 1.945      1st Qu.:0.000000       
+ Median : 3.365      Median :0.000000       
+ Mean   : 3.341      Mean   :0.001606       
+ 3rd Qu.: 4.782      3rd Qu.:0.000000       
+ Max.   :10.710      Max.   :0.110000       
+ VeryActiveMinutes FairlyActiveMinutes
+ Min.   :  0.00    Min.   :  0.00     
+ 1st Qu.:  0.00    1st Qu.:  0.00     
+ Median :  4.00    Median :  6.00     
+ Mean   : 21.16    Mean   : 13.56     
+ 3rd Qu.: 32.00    3rd Qu.: 19.00     
+ Max.   :210.00    Max.   :143.00     
+ LightlyActiveMinutes SedentaryMinutes
+ Min.   :  0.0        Min.   :   0.0  
+ 1st Qu.:127.0        1st Qu.: 729.8  
+ Median :199.0        Median :1057.5  
+ Mean   :192.8        Mean   : 991.2  
+ 3rd Qu.:264.0        3rd Qu.:1229.5  
+ Max.   :518.0        Max.   :1440.0  
+    Calories   
+ Min.   :   0  
+ 1st Qu.:1828  
+ Median :2134  
+ Mean   :2304  
+ 3rd Qu.:2793  
+ Max.   :4900  
