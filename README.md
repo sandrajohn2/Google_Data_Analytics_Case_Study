@@ -112,7 +112,9 @@ The daily_activity file tells us lots of useful information. For example, we fin
 ### Steps v Calories
 First, lets look at the daily number of steps taken.
 
-<img src="daily_steps.png" alt="Daily Steps" width="800"/>
+The blue line on the histogram displays 10k, which is the
+
+
 
 
 
