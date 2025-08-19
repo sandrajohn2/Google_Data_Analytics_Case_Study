@@ -109,6 +109,12 @@ Users have an average of 419.2 minutes asleep, which converts to 6.9 hours, and 
 
 The daily_activity file tells us lots of useful information. For example, we find that the mean number of steps taken in a day is 7406, which is below the recommended 10k steps. When comparing the minutes that users are very active, fairly active, lightly active, or sedentary, we find that the mean for fairly active is the lowest at 13.56 minutes. Another useful piece of information we find is that the average number of calories burned in a day is 2304. Additional information can be found [here](daily_activity_summary.txt).
 
+### Steps v Calories Burned
+
+By looking at the hourly number of steps taken, we are able to deduct that the most number of steps is typically taken between 5-7pm. This suggests that users may be participating in physical activity after work hours. 
+
+
+
 
 
 
