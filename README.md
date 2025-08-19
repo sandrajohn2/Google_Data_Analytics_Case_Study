@@ -28,6 +28,7 @@ Key Stakeholders:
 
 ## 2. Prepare
 Data Source - Fitbit Fitness Tracker Data: https://www.kaggle.com/datasets/arashnic/fitbit
+
 This dataset has 18 CSV. Thirty Fitbit users consented to the submission of personal tracker data through a survey from Amazon Mechanical Turk between March 2016 - May 2016. 
 
 This data follows ROCCC:
