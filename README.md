@@ -83,11 +83,11 @@ n_distinct(weight_info$Id)
 ```
 Then, to look further into why this irregularity is occuring, lets look at the manual entries on the weight dataset. Many users submitted their information multiple times which therefore leads to more discrepencies and is a limitation to gaining credible analysis. 
 ```
-weight_info %>% 
-+     +     +     filter(IsManualReport == TRUE) %>% 
-+     +     +     group_by(Id) %>% 
-+     +     +     summarise("Manual Weight Report"=n()) %>%
-+     +     +     distinct()
+weight_info %>%
++     filter(IsManualReport == TRUE) %>%
++     group_by(Id) %>% 
++     summarise("Manual Weight Report"=n()) %>%
++     distinct()
 ```
 
 #
@@ -104,8 +104,26 @@ summary(weight_info)
 ```
 
 The mean weight is 158.8 with a BMI of 25.19. For reference, the [National Heart, Blood, and Lung Institute](https://www.nhlbi.nih.gov/health/heart-healthy-living/healthy-weight#:~:text=Language%20switcher&text=A%20healthy%20weight%20for%20adults,more%20information%20about%20these%20topics.&text=Your%20browser%20can't%20play%20this%20video.&text=An%20error%20occurred.,is%20disabled%20in%20your%20browser.) states that healthy BMI range is typically between 18.5 and 24.9.
+```
+WeightPounds        BMI       
+ Min.   :116.0   Min.   :21.45  
+ 1st Qu.:135.4   1st Qu.:23.96  
+ Median :137.8   Median :24.39  
+ Mean   :158.8   Mean   :25.19  
+ 3rd Qu.:187.5   3rd Qu.:25.56  
+ Max.   :294.3   Max.   :47.54  
+```
 
 Users have an average of 419.2 minutes asleep, which converts to 6.9 hours, and 458.5 minutes in bed, which is 7.6 hours. According to [Harvard Health](https://www.health.harvard.edu/blog/how-much-sleep-do-you-actually-need-202310302986) adults need at least 7 hours of sleep per night, meaning these participants are pretty well rested!
+```
+TotalMinutesAsleep TotalTimeInBed 
+Min.   : 58.0      Min.   : 61.0  
+1st Qu.:361.0      1st Qu.:403.8  
+Median :432.5      Median :463.0  
+Mean   :419.2      Mean   :458.5  
+3rd Qu.:490.0      3rd Qu.:526.0  
+Max.   :796.0      Max.   :961.0
+```
 
 The daily_activity file tells us lots of useful information. For example, we find that the mean number of steps taken in a day is 7406, which is below the recommended 10k steps. When comparing the minutes that users are very active, fairly active, lightly active, or sedentary, we find that the mean for fairly active is the lowest at 13.56 minutes. Another useful piece of information we find is that the average number of calories burned in a day is 2304. Additional information can be found [here](daily_activity_summary.txt).
 
