@@ -42,7 +42,77 @@ However, there are many limitations to this dataset
 - The data is gathered from volunteers, which can create selection bias in the data rather than gathering information from a random sample
 - Data may not be the most accurate due to the lack of updates since 2016
 - Only 30 user data, according to the central limit theorem a sample size of more than 30 is preferred for accuracy
-- Absence of demographics such as gender, age, or weight
+- Absence of demographics such as gender or age
+
+#
+
+## 3. Process
+Transform the data in order to analyze effectively.
+
+After loading packages and adding the CSV files into R, begin the cleaning by fixing the date/time format
+```
+daily_activity <- daily_activity %>%
++ mutate(ActivityDate = mdy(ActivityDate))
+sleep_day <- sleep_day %>%
++ mutate(SleepDay = mdy_hms(SleepDay))
+hourly_steps <- hourly_steps %>%
++ mutate(ActivityHour = mdy_hms(ActivityHour))
+```
+
+Check for null values
+```
+sum(is.na(daily_activity))
+sum(is.na(sleep_day))
+sum(is.na(weight_info))
+```
+*65 NA were found in weight_info under the Fat column, which is due to manual entry by users. Due to the overwhelming amount of no data, we choose to erase this from any analysis/conclusions*
+
+Check and clean duplicates
+```
+sum(duplicated(daily_activity))
+sum(duplicated(sleep_day))
+sum(duplicated(weight_info))
+sleep_day <- sleep_day %>% distinct()
+```
+
+Looked for validity and ran some code to find that there were 33 user inputs for daily activity, 24 for sleep, and only 8 for weight. 
+```
+n_distinct(daily_activity$Id) 
+n_distinct(sleep_day$Id) 
+n_distinct(weight_info$Id)
+```
+Then, to look further into why this irregularity is occuring, lets look at the manual entries on the weight dataset. Many users submitted their information multiple times which therefore leads to more discrepencies and is a limitation to gaining credible analysis. 
+```
+weight_info %>% 
++     +     +     filter(IsManualReport == TRUE) %>% 
++     +     +     group_by(Id) %>% 
++     +     +     summarise("Manual Weight Report"=n()) %>%
++     +     +     distinct()
+```
+
+#
+
+## 4. Analyze
+
+### Summary
+Gather the data and create summary charts to get information such as the min, max, mean, and any outliers. 
+
+```
+summary(daily_activity)
+summary(sleep_day)
+summary(weight_info)
+```
+
+The mean weight is 158.8 with a BMI of 25.19. For reference a healthy BMI range is typically between 18.5 and 24.9.
+
+Users have an average of 419.2 minutes asleep, which converts to 6.9 hours, and 458.5 minutes in bed, which is 7.6 hours. The recommened daily hours of sleep is 8, so users are typically close to reaching this capstone.
+
+The daily_activity file tells us lots of useful information. For example, we find that the mean number of steps taken in a day is 7406, which is below the recommended 10k steps. When comparing the minutes that users are very active, fairly active, lightly active, or sedentary, we find that the mean for fairly active is the lowest at 13.56 minutes. Another useful piece of information we find is that the average number of calories burned in a day is 2304. Additional data is listed out down below. 
+
+
+
+
+
 
 
 
