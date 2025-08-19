@@ -17,7 +17,40 @@ Although Bellabeat is a small company, it has the potential to become a larger c
 #
 
 ## 1. Ask
-###BUSINESS TASK: Analyze non-Bellabeat smart device data to discover potential growth opportunities and tactical marketing strategies for Bellabeat.
+#### *BUSINESS TASK: Analyze non-Bellabeat smart device data to discover potential growth opportunities and tactical marketing strategies for Bellabeat.* ####
+
+Key Stakeholders:
+- Urška Srśen: Cofounder and Chief Creative Officer
+- Sando Mur: Cofounder and Mathematician; key member of executive team
+- Bellabeat marketing analytics team
+
+#
+
+## 2. Prepare
+Data Source - Fitbit Fitness Tracker Data: https://www.kaggle.com/datasets/arashnic/fitbit
+This dataset has 18 CSV. Thirty Fitbit users consented to the submission of personal tracker data through a survey from Amazon Mechanical Turk between March 2016 - May 2016. 
+
+This data follows ROCCC:
+- Reliability: The data was collected through a reliable source, Amazon Mechanical Turk, who used data from 30   individuals who consented to the utilization of their information.
+- Original: This information is from first-party data through data straight from the FitBit users
+- Comprehensive: All 18 CSV include information such as minute-level output for physical activity, heart rate, and sleep monitoring
+- Current: The data is from 2016, so it is not current and information may be outdated
+- Cited: Kaggle page, Zenodo DOI
+
+However, there are many limitations to this dataset
+- The data is gathered from volunteers, which can create selection bias in the data rather than gathering information from a random sample
+- Data may not be the most accurate due to the lack of updates since 2016
+- Only 30 user data, according to the central limit theorem a sample size of more than 30 is preferred for accuracy
+- Absence of demographics such as gender, age, or weight
+
+
+
+
+
+
+
+
+
 
 
 
