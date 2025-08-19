@@ -125,7 +125,8 @@ Mean   :419.2      Mean   :458.5
 Max.   :796.0      Max.   :961.0
 ```
 
-The daily_activity file tells us lots of useful information. For example, we find that the mean number of steps taken in a day is 7406, which is below the recommended 10k steps. When comparing the minutes that users are very active, fairly active, lightly active, or sedentary, we find that the mean for fairly active is the lowest at 13.56 minutes. Another useful piece of information we find is that the average number of calories burned in a day is 2304. Additional information can be found [here](daily_activity_summary.txt).
+The daily_activity file tells us lots of useful information. For example, we find that the mean number of steps taken in a day is 7406, which is below the recommended 8,000 - 10,000 recommended steps from the [CDC](https://www.cdc.gov/physical-activity-basics/benefits/index.html). When comparing the minutes that users are very active, fairly active, lightly active, or sedentary, we find that the mean for fairly active is the lowest at 13.56 minutes. Another useful piece of information we find is that the average number of calories burned in a day is 2304. Additional information can be found [here](daily_activity_summary.txt).
+```
 
 ### Steps v Calories
 First, lets look at the daily number of steps taken.
