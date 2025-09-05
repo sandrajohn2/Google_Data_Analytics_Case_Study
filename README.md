@@ -159,6 +159,12 @@ r_value <- cor_test$estimate
 ```
 We find that the r-value is 0.6, meaning there is a moderate to strong positive correlation between steps and calories. We can deduct from this statistic that the more steps a user takes, the most calories they burn. Bellabeat can use this insight to promote taking more steps a day if an individual is on a weight loss journey and wants to increase the number of calories they burn a day.
 
+#
+
+## 5. Share
+
+
+
 
 
 
