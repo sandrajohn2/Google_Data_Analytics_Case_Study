@@ -103,6 +103,7 @@ summary(sleep_day)
 summary(weight_info)
 ```
 
+### Weight
 The mean weight is 158.8 with a BMI of 25.19. For reference, the [National Heart, Blood, and Lung Institute](https://www.nhlbi.nih.gov/health/heart-healthy-living/healthy-weight#:~:text=Language%20switcher&text=A%20healthy%20weight%20for%20adults,more%20information%20about%20these%20topics.&text=Your%20browser%20can't%20play%20this%20video.&text=An%20error%20occurred.,is%20disabled%20in%20your%20browser.) states that healthy BMI range is typically between 18.5 and 24.9.
 ```
 WeightPounds        BMI       
@@ -114,6 +115,7 @@ WeightPounds        BMI
  Max.   :294.3   Max.   :47.54  
 ```
 
+### Sleep Efficiency 
 Users have an average of 419.2 minutes asleep, which converts to 6.9 hours, and 458.5 minutes in bed, which is 7.6 hours. According to [Harvard Health](https://www.health.harvard.edu/blog/how-much-sleep-do-you-actually-need-202310302986) adults need at least 7 hours of sleep per night, meaning these participants are pretty well rested!
 ```
 TotalMinutesAsleep TotalTimeInBed 
@@ -125,20 +127,38 @@ Mean   :419.2      Mean   :458.5
 Max.   :796.0      Max.   :961.0
 ```
 
+### Activity Minutes
 The daily_activity file tells us lots of useful information. For example, we find that the mean number of steps taken in a day is 7406, which is below the recommended 8,000 - 10,000 recommended steps from the [CDC](https://www.cdc.gov/physical-activity-basics/benefits/index.html). When comparing the minutes that users are very active, fairly active, lightly active, or sedentary, we find that the mean for fairly active is the lowest at 13.56 minutes. Another useful piece of information we find is that the average number of calories burned in a day is 2304. Additional information can be found [here](daily_activity_summary.txt).
 ```
 TotalSteps      VeryActiveMinutes FairlyActiveMinutes LightlyActiveMinutes SedentaryMinutes  Calories                                                                     
-Min.   :   0    Min.   :  0.00    Min.   :  0.00      Min.   :  0.0        Min.   :   0.0    Min.   :   0                                                                 1st Qu.: 729.8  1st Qu.:  0.00    1st Qu.:  0.00      1st Qu.:127.00       1st Qu.: 729.8    1st Qu.:1828
+Min.   :   0    Min.   :  0.00    Min.   :  0.00      Min.   :  0.0        Min.   :   0.0    Min.   :   0                                                                                                          1st Qu.: 729.8  1st Qu.:  0.00    1st Qu.:  0.00      1st Qu.:127.00       1st Qu.: 729.8    1st Qu.:1828
 Median : 7406   Median :  4.00    Median :  6.00      Median :199.0        Median :1057.5    Median :2134
 Mean   : 7638   Mean   : 21.16    Mean   : 13.56      Mean   :192.8        Mean   : 991.2    Mean   :2304 
 3rd Qu.:10727   3rd Qu.: 32.00    3rd Qu.: 19.00      3rd Qu.:264.0        3rd Qu.:1229.5    3rd Qu.:2793
 Max.   :36019   Max.   :210.00    Max.   :143.00      Max.   :518.0        Max.   :1440.0    Max.   :4900
-``` 
+```
+
+The CDC also recommends that individuals partake in 30 minutes of moderately active behavior. After running some tests on the results above, we find that the average number of FairlyActiveMinutes + VeryActiveMinutes is 34.7, however, the median is 21 minutes, which causes some discrepancies. Then, looking further we see that the 30 minute goal is only met 42% of the days. This tells us that while some participants may be highly active, others fall short of the guidelines. Bellabeat can profit off of this finding as they should promote getting in 30 minutes of moderate activity each day. 
+
+```
+daily_activity %>%
++     mutate(moderate_plus = FairlyActiveMinutes + VeryActiveMinutes) %>%
++     summarise(
++         avg_minutes = mean(moderate_plus, na.rm = TRUE),
++         median_minutes = median(moderate_plus, na.rm = TRUE),
++         pct_goal = mean(moderate_plus >= 30, na.rm = TRUE) * 100
++     )
+```
 
 ### Steps v Calories
-First, lets look at the daily number of steps taken.
 
-The blue line on the histogram displays 10k, which is the
+Lets look at the correlation between the number of steps taken v calories burned. By running a correlation test such as: 
+```
+cor_test <- cor.test(daily_activity$TotalSteps, daily_activity$Calories, method = "pearson")
+r_value <- cor_test$estimate
+```
+We find that the r-value is 0.6, meaning there is a moderate to strong positive correlation between steps and calories. We can deduct from this statistic that the more steps a user takes, the most calories they burn. Bellabeat can use this insight to promote taking more steps a day if an individual is on a weight loss journey and wants to increase the number of calories they burn a day.
+
 
 
 
