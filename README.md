@@ -167,8 +167,9 @@ Now that the data has been analyzed, we can look at the visual representations t
 
 ### Daily Steps
 
-<img src="images/daily_steps.png" width="500">
+<img src="daily_steps.png" width="600">
 
+Most steps taken are in the 3,000 - 9,000 range, and there is a significant decline after the steps hit 10,000, which is represented by the blue dashed line.
 
 
 
