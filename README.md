@@ -163,6 +163,8 @@ We find that the r-value is 0.6, meaning there is a moderate to strong positive 
 
 ## 5. Share
 
+Through the analysis conducted above, we can make smart and informed insights about Bellabeat and their marketing strategy.
+
 
 
 
