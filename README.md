@@ -169,7 +169,27 @@ Now that the data has been analyzed, we can look at the visual representations t
 
 <img src="daily_steps.png" width="600">
 
-Most steps taken are in the 3,000 - 9,000 range, and there is a significant decline after the steps hit 10,000, which is represented by the blue dashed line.
+Most steps taken are in the 3,000 - 9,000 range, and there is a significant decline after the steps hit 10,000, which is represented by the blue dashed line. This shows that most users fall short of the recommended daily steps.
+
+### Hourly Steps
+
+<img src="hourly_steps.png" width="600">
+
+We see that there is an influx of steps from 12-2 and the largest amount of steps taken from 5-7pm. These times correlate with breaks people typically have when working a typical 9-5 job. 12-2pm is the prime time for a lunch break, in which individuals who work at their office might leave to grab food from a nearby restaurant. Additionally, 5-7pm is after work is done and when people might try to workout. These insights can help make meaningful insights into when Bellabeats should notify users to keep moving.
+
+### Steps v Calories
+
+<img src="steps_calories.png" width="600">
+
+
+
+### Sleep Efficiency
+
+<img src="sleep_v_bed.png" width="600">
+
+The red dots signify users with bad sleep efficiency, meaning the time they spend in bed is a lot higher than hours slept. Users average around 91% sleep efficiency, as we can see through the numerous green dots clustered around the 1:1 line. However, 1 out of 5 nights fall below 90% sleep efficiency, meaning users still need support in gaining restful sleep.
+
+
 
 
 
