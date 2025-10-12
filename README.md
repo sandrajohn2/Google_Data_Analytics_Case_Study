@@ -189,9 +189,15 @@ We see that there is an influx of steps from 12-2 and the largest amount of step
 
 The red dots signify users with bad sleep efficiency, meaning the time they spend in bed is a lot higher than hours slept. Users average around 91% sleep efficiency, as we can see through the numerous green dots clustered around the 1:1 line. However, 1 out of 5 nights fall below 90% sleep efficiency, meaning users still need support in gaining restful sleep.
 
+## 6. Act
 
+Using our analysis, we can now making meaningful insights to drive Bellabeat's marketing and product strategies.
 
-
+- **Encourage more daily activity:** The average user takes around 7,400 steps per day, which falls short of the recommended 8,000-10,000 steps.
+     - Action: Bellabeat should introduce step-based challenges and milestone badges to motivate users to take more steps. Additionally, they should include push notifications from 5pm-7pm when people are active and more likely to close their step goals.
+- **Promote Physical Activity:** Only around 30% of users meet the CDC's 30 minute guideline when it comes to combined fairly and very active time per day. Additionally, users also spend roughly 16.5 hours per day sedentary, which is around 70% of hours awake during the day.
+     - Action: Add guided workouts within the Bellabeat app to give a more accessible option for users to get a quick workout in during the day. Additionally, implement time to move reminders if users have been sedentary for too long at a time, which can also help users who may sit in an office to take brief breaks from sitting.
+- **Improve Sleep Quality:** 1 out of 5 nights for users fall below a 90% sleep efficiency, which indicates occasional restlessness. 
 
 
 
