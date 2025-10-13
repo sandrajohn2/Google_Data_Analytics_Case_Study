@@ -20,23 +20,23 @@ Although Bellabeat is a small company, it has the potential to become a larger c
 #### *BUSINESS TASK: Analyze non-Bellabeat smart device data to discover potential growth opportunities and tactical marketing strategies for Bellabeat.* ####
 
 Key Stakeholders:
-- Urška Srśen: Cofounder and Chief Creative Officer
-- Sando Mur: Cofounder and Mathematician; key member of executive team
-- Bellabeat marketing analytics team
+- Urška Sršen: Cofounder and Chief Creative Officer
+- Sando Mur: Cofounder and Mathematician; key member of the executive team
+- Bellabeat Marketing Analytics Team
 
 #
 
 ## 2. Prepare
 Data Source - Fitbit Fitness Tracker Data: https://www.kaggle.com/datasets/arashnic/fitbit
 
-This dataset has 18 CSV. Thirty Fitbit users consented to the submission of personal tracker data through a survey from Amazon Mechanical Turk between March 2016 - May 2016. 
+This dataset includes 18 CSV files. Thirty Fitbit users consented to the submission of personal tracker data through a survey from Amazon Mechanical Turk between March 2016 - May 2016. 
 
 This data follows ROCCC:
-- Reliability: The data was collected through a reliable source, Amazon Mechanical Turk, who used data from 30   individuals who consented to the utilization of their information.
-- Original: This information is from first-party data through data straight from the FitBit users
-- Comprehensive: All 18 CSV include information such as minute-level output for physical activity, heart rate, and sleep monitoring
+- Reliability: The data was collected through a reliable source, Amazon Mechanical Turk, who used data from 30 individuals who consented to the utilization of their information.
+- Original: This information is from first-party data through data straight from FitBit users
+- Comprehensive: All 18 CSV files include information such as minute-level output for physical activity, heart rate, and sleep monitoring
 - Current: The data is from 2016, so it is not current and information may be outdated
-- Cited: Kaggle page, Zenodo DOI
+- Cited: Data is available on Kaggle, with an associated Zenodo DOI
 
 However, there are many limitations to this dataset
 - The data is gathered from volunteers, which can create selection bias in the data rather than gathering information from a random sample
