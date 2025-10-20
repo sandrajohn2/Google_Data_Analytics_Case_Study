@@ -181,6 +181,7 @@ We see that there is an influx of steps from 12-2 and the largest amount of step
 
 <img src="steps_calories.png" width="600">
 
+The scatter plot shows a positive correlation between total steps and calories burned. The red line represents the regression line (line of best fit), illustrating the direction and strength of this trend with a positive slope. This suggests that increased movement and step count directly contribute to a higher energy output/calories burned.
 
 
 ### Sleep Efficiency
