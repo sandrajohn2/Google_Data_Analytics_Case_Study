@@ -1,0 +1,151 @@
+---
+title: "R Notebook - Bellabeat Case Study"
+output: 
+  html_document:
+  df_print: paged
+html_notebook: default
+pdf_document: default
+---
+
+Step 1: Load the packages
+```{r}
+library(tidyverse)
+library(janitor)
+library(skimr)
+library(dplyr)
+library(plotly)
+library(readr)
+library(ggplot2)
+library(lubridate)
+
+```
+
+Step 2: Add and prepare data
+```{r}
+daily_activity <- read_csv("~/Downloads/Fitabase Data 4.12.16-5.12.16/dailyActivity_merged.csv")
+sleep_day <- read_csv("~/Downloads/Fitabase Data 4.12.16-5.12.16/sleepDay_merged.csv")
+hourly_steps <- read_csv("~/Downloads/Fitabase Data 4.12.16-5.12.16/hourlySteps_merged.csv")
+hourly_calories <- read_csv("~/Downloads/Fitabase Data 4.12.16-5.12.16/hourlyCalories_merged.csv")
+heartrate_seconds <- read_csv("~/Downloads/Fitabase Data 4.12.16-5.12.16/heartrate_seconds_merged.csv")
+weight_info <- read_csv("~/Downloads/Fitabase Data 4.12.16-5.12.16/weightLogInfo_merged.csv")
+
+# Fix Date/Time Format
+daily_activity <- daily_activity %>%
+ mutate(ActivityDate = mdy(ActivityDate))
+sleep_day <- sleep_day %>%
+ mutate(SleepDay = mdy_hms(SleepDay))
+hourly_steps <- hourly_steps %>%
+ mutate(ActivityHour = mdy_hms(ActivityHour))
+
+# Check for null values
+sum(is.na(daily_activity))
+sum(is.na(sleep_day))
+sum(is.na(weight_info)) # 65 Null Values because of manual entry
+
+# Check for duplicates and clean if found
+sum(duplicated(daily_activity))
+sum(duplicated(sleep_day)) # Returned 3
+sum(duplicated(weight_info))
+sleep_day <- sleep_day %>% distinct()
+sum(duplicated(sleep_day)) # Now returns 0
+
+# Check the number of user inputs per dataset
+n_distinct(daily_activity$Id) # Returned 33
+n_distinct(sleep_day$Id) # Returned 24
+n_distinct(weight_info$Id) # Returned 8
+
+# Check the manual entries 
+weight_info %>% 
+ filter(IsManualReport == TRUE) %>% 
+ group_by(Id) %>% 
+ summarise("Manual Weight Report"=n()) %>%
+ distinct()
+```
+
+Step 3: Find the statistics summary for the three tables
+```{r}
+daily_activity_summary <- skim(daily_activity)
+
+daily_activity_summary_df <- as.data.frame(daily_activity_summary)
+
+write_csv(daily_activity_summary, "~/Downloads/daily_activity_summary.csv") #Download to computer
+
+daily_activity_summary
+
+summary(sleep_day)
+
+summary(weight_info)
+```
+
+Step 4: Compare total steps to calories burned
+```{r}
+ggplot(daily_activity, aes(x = TotalSteps, y = Calories)) + 
+     geom_point(alpha = 0.4, color = "steelblue") +
+     geom_smooth(method = "lm", se = FALSE, color = "darkred") +
+     labs(title = "Steps vs Calories Burned", x = "Total Steps", y = "Calories Burned")
+
+# Check correlation
+cor(daily_activity$TotalSteps, daily_activity$Calories, use = "complete.obs") #strong (r = 0.6)
+```
+
+Step 5: Look at steps per hour of the day
+```{r}
+hourly_steps <- hourly_steps %>%
+     mutate(Hour = lubridate::hour(ActivityHour))
+hourly_summary <- hourly_steps %>%
+     group_by(Hour) %>%
+     summarise(avg_steps = mean(StepTotal, na.rm = TRUE)) %>%
+     arrange(desc(avg_steps))
+ggplot(hourly_summary, aes(x = factor(Hour), y = avg_steps, fill = avg_steps)) +
+    geom_col() +
+     scale_fill_gradient(low = "#F9C74F", high = "#577590") +
+     labs(title = "Average Steps by Hour of Day",
+          x = "Hour of Day (24h format)",
+          y = "Average Steps") +
+     theme_minimal(base_size = 14) +
+     theme(
+         plot.title = element_text(face = "bold", hjust = 0.5),
+         legend.position = "none"
+     )
+```
+
+Step 6: Show distribution of daily steps
+```{r}
+ggplot(daily_activity, aes(x = TotalSteps)) +
+     geom_histogram(binwidth = 3000, fill = "#43AA8B", color = "white", alpha = 0.8) +
+     geom_vline(xintercept = 10000, color = "blue", linetype = "dashed", size = 1) +
+     labs(title = "Distribution of Daily Steps",
+          x = "Total Steps",
+          y = "Number of Days") +
+     theme_minimal(base_size = 14) +
+     theme(plot.title = element_text(face = "bold", hjust = 0.5))
+```
+Step 7: Compare time in bed to time slept
+```{r}
+sleep_day %>%
+  mutate(HoursAsleep = TotalMinutesAsleep/60,
+         HoursInBed = TotalTimeInBed/60) %>%
+  ggplot(aes(x = HoursInBed, y = HoursAsleep)) +
+  geom_point(aes(color = HoursAsleep/HoursInBed), size = 3, alpha = 0.7) +  # points shaded by efficiency
+  scale_color_gradient(low = "#F94144", high = "#43AA8B") +  # red → green
+  geom_abline(intercept = 0, slope = 1, color = "#577590", linetype = "dashed", size = 1) + # reference line
+  labs(title = "Hours Asleep vs. Hours in Bed",
+       x = "Hours in Bed",
+       y = "Hours Asleep",
+       color = "Sleep Efficiency") +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    panel.grid.minor = element_blank()
+  )
+```
+Step 8: Analyze minutes of activity
+```{r}
+daily_activity %>%
+     mutate(moderate_plus_vigorous = FairlyActiveMinutes + VeryActiveMinutes) %>%
+     summarise(
+         avg_minutes = mean(moderate_plus_vigorous, na.rm = TRUE),
+         median_minutes = median(moderate_plus_vigorous, na.rm = TRUE),
+         pct_goal_days = mean(moderate_plus_vigorous >= 30, na.rm = TRUE) * 100
+     )
+```
